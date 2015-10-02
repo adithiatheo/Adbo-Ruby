@@ -1,54 +1,71 @@
 class PublicClass
-	attr_accessor :private_int=1, :public_string="Hello", :static_int, :pi=3.14
+
+	@privateInt
+	
+	@publicString = "Hello"
+	def setPublicString(publicString)
+	@publicString = publicString
+	end
+	
+	def getPublicString
+	return @publicString
+	end
+	
+	@@staticInt
+	def setStaticInt(staticInt)
+	@staticInt = staticInt
+	end
+	
+	def getstaticInt
+	return @@staticInt
+	end
+	
+	@pi = 3.14
 	
 	def initialize()
 	end
 	
-	def set_private_int(private_int)
-	@private_int = private_int
+	def setPrivateInt(privateInt)
+	@privateInt = privateInt
 	end
 	
 	def get_private_int
-	attr_reader :private_int
+	return @privateInt
 	end
 	
 end
 
 class PublicSubClass < PublicClass
 	
-	def get_private_int
-	@private_int = 2*super.get_private_int
+	def getPrivateInt
+	return 2*super
 	end
 	
 end
 
-class LanguagesExploration
-	def initialize()
-	play()
-	end
+
+	publicClass=PublicClass.new
 	
-	def play
-	public_class=PublicClass.new
-	public_class.set_private_int(13)
-	puts "[13] publicClass.getPrivateInt() = " + public_class.get_private_int
-	public_class.public_string = "World!"
-	puts "[World!] publicClass.publicString = " + public_class.public_string
-	PublicClass.staticint = 10;
-	puts "[10] PublicClass.staticInt = " + PublicClass.staticint
-	puts "[3.14] PublicClass.PI = " + PublicClass.pi
+	publicClass.setPrivateInt(13)
+	puts "[13] publicClass.getPrivateInt() = "
+	puts publicClass.getPrivateInt
 	
-	public_sub_class = PublicSubClass.new
-	public_sub_class.set_private_int(13)
-	puts "[26] publicSubClass.getPrivateInt() = " + public_sub_class.get_private_int	
+	publicClass.setPublicString= "World!"
+	puts "[World!] publicClass.publicString = "  
+	puts publicClass.getPublicString
+	
+	PublicClass.setStaticInt= 10;
+	puts "[10] PublicClass.staticInt = "
+	puts publicClass.getstaticInt
+	
+	puts "[3.14] PublicClass.PI = "
+	puts PublicClass::pi
+	
+	publicSubClass = PublicSubClass.new
+	publicSubClass.setPrivateInt(13)
+	puts "[26] publicSubClass.getPrivateInt() = " 
+    puts publicSubClass.getPrivateInt
+	
+	
 	end
 end
-
-
-
-
-	
-	
-	
-	
-	
-	
